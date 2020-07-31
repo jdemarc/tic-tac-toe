@@ -1,5 +1,6 @@
 header {
     text-align: center;
+    padding: 2vmin;
 }
 
 #game-grid {
@@ -10,7 +11,7 @@ header {
     grid-gap: 10px;
 }
 
-#cell {
+.cell {
     color: blue;
     border: 1px solid black;
 }
