@@ -1,4 +1,16 @@
+header {
+    text-align: center;
+}
+
 #game-grid {
     display: grid;
+    justify-content: center;
     grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    grid-gap: 10px;
+}
+
+#cell {
+    color: blue;
+    border: 1px solid black;
 }
