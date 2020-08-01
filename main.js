@@ -1,19 +1,19 @@
 /*----- constants -----*/
 const WIN_TABLE = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
+    [0, 1, 2], //3
+    [3, 4, 5], //12
+    [6, 7, 8], //21
 
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
+    [0, 3, 6], //9
+    [1, 4, 7], //12
+    [2, 5, 8], //15
 
-    [0, 4, 8],
-    [2, 4, 6]
+    [0, 4, 8], //12
+    [2, 4, 6] //12
 ];
 
 const colors = {
-    'null': 'purple',
+    'null': 'gray',
     '1': 'red',
     '-1': 'blue'
 };
@@ -25,7 +25,8 @@ let turn;
 let winner;
 
 /*----- cached element references -----*/
-const boardSquareEls = document.getElementById('game-grid > div');
+const squareEls = document.querySelectorAll('#game-grid > div');
+console.log(squareEls);
 
 const msgEl = document.getElementById('score-msg');
 
@@ -37,7 +38,21 @@ document.getElementById('game-grid')
 init();
 
 function handleSquareClick(event) {
-    console.log(event.target);
+    let squareId = event.target.id;
+    //Extract index of square from div id using regex.
+    squareIdx = squareId.replace(/\D/g, '');
+
+    if (
+        squareIdx !== null ||
+        winner !== null
+    ) return;
+
+    board[squareIdx] = turn;
+    turn *= 1;
+
+
+
+
 }
 
 function init() {
@@ -45,16 +60,19 @@ function init() {
     turn = 1;
     winner = null;
 
-    console.log(board);
-    //renderBoard();
+    renderBoard();
 }
 
 function renderBoard() {
-    board.forEach(function(boardSquare, idx) {
-        
+
+    // Iterate over the board and give each square a gray background.
+    // Since the board should be initialized to null, color['null'] should be gray.
+
+    board.forEach(function(square, idx) {
+        squareEls[idx].style.background = colors[square];
     });
 
-    renderMessage();
+    //renderMessage();
 }
 
 function renderMessage() {
