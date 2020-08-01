@@ -63,7 +63,7 @@ function handleSquareClick(event) {
     board[squareIdx] = turn;
     
     // Change current player.
-    turn *= -1;
+    turn = turn === 1 ? -1 : 1;
 
     // Test board for a winner, a tie, or if game is in play.
     winner = testForWin();
@@ -133,12 +133,8 @@ function testForWin() {
 
     /**
      * If the board contains null values, the winner is set to null so the game can continue to play.
-     * Otherwise, if the board is filled with values but no winner was found, the game has tied.
+     * Otherwise, if the board is filled with values but no winner was found (above), the game has tied.
      */
 
-    if (board.includes(null)) {
-        return null;
-    } else {
-        return 'T';
-    }
+    return board.includes(null) ? null : 'T';
 }
