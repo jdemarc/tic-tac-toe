@@ -1,50 +1,70 @@
 /*----- constants -----*/
 const WIN_TABLE = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
 
+    [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
-    [3, 6, 9],
 
-    [1, 5, 9],
-    [3, 5, 7]
+    [0, 4, 8],
+    [2, 4, 6]
 ];
 
 const colors = {
-    null: 'white',
+    'null': 'purple',
     '1': 'red',
     '-1': 'blue'
 };
 
 
 /*----- app's state (variables) -----*/
-let board = []; // state of board must be tracked throughout
+let board = [];
 let turn;
-let winner; // user makes selection on board (1-9)
+let winner;
 
 /*----- cached element references -----*/
-boardSquareEls = document.getElementById('game-grid');
+const boardSquareEls = document.getElementById('game-grid > div');
+
+const msgEl = document.getElementById('score-msg');
 
 /*----- event listeners -----*/
-
+document.getElementById('game-grid')
+    .addEventListener('click', handleSquareClick);
 
 /*----- functions -----*/
 init();
 
+function handleSquareClick(event) {
+    console.log(event.target);
+}
+
 function init() {
     board = Array(9).fill(null);
-    turn = colors['1'];
+    turn = 1;
     winner = null;
+
+    console.log(board);
+    //renderBoard();
 }
 
 function renderBoard() {
-    
+    board.forEach(function(boardSquare, idx) {
+        
+    });
+
+    renderMessage();
 }
 
 function renderMessage() {
-
+    if (winner !== null) {
+        msgEl.textContent = `${color['1']}'s turn.`; // This is wrong.
+    } else if (winner === 'T') {
+        msgEl.textContent = 'Tie';
+    } else {
+        msgEl.textContent = `${color['-1']} has won.`; // This is wrong.
+    }
 }
 
 function isGameOver() {

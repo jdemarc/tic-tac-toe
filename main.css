@@ -9,9 +9,10 @@ header {
     grid-template-columns: 200px 200px 200px;
     grid-template-rows: 200px 200px 200px;
     grid-gap: 10px;
+
 }
 
-.cell {
+#game-grid > div {
     color: blue;
     border: 1px solid black;
 }
