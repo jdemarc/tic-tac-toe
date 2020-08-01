@@ -1,4 +1,4 @@
-header {
+header, h2 {
     text-align: center;
     padding: 2vmin;
 }
@@ -15,8 +15,4 @@ header {
 #game-grid > div {
     color: blue;
     border: 1px solid black;
-}
-
-h2 {
-    color: black;
 }

@@ -49,22 +49,23 @@ function handleSquareClick(event) {
         winner !== null
     ) return;
 
-
     board[squareIdx] = turn;
-
-    console.log(board[squareIdx]);
     turn *= -1;
-
     
-    if (Math.abs(board[WIN_TABLE[0][0]] + board[WIN_TABLE[0][1]] + board[WIN_TABLE[0][2]] === 3)) {
-        //set winner
-        //return;
+    for (let i = 0; i < WIN_TABLE.length; i++) {
+        if (Math.abs(board[WIN_TABLE[i][0]]) + 
+            Math.abs(board[WIN_TABLE[i][1]]) +
+            Math.abs(board[WIN_TABLE[i][2]]) === 3) {
+                winner = board[WIN_TABLE[i][0]];
+        }
+    }
+    
+
+    if (board.includes(!null)) {
+        winner = 'T';
     }
 
-    //Math.abs(board[WIN_TABLE[0][0]]) + Math.abs(board[WIN_TABLE[0][1]]) + Math.abs(board[WIN_TABLE[0][2]]);
-
-    console.log(test);
-
+    renderBoard();
 }
 
 function init() {
@@ -84,19 +85,16 @@ function renderBoard() {
         squareEls[idx].style.background = colors[square];
     });
 
-    //renderMessage();
+    renderMessage();
 }
 
 function renderMessage() {
-    if (winner !== null) {
-        msgEl.textContent = `${color['1']}'s turn.`; // This is wrong.
+
+    if (winner) {
+        msgEl.textContent = `${colors[winner].toUpperCase()} has won.`; 
     } else if (winner === 'T') {
         msgEl.textContent = 'Tie';
     } else {
-        msgEl.textContent = `${color['-1']} has won.`; // This is wrong.
+        msgEl.textContent = `${colors[turn].toUpperCase()}'s turn.`;
     }
-}
-
-function isGameOver() {
-
 }
