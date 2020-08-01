@@ -1,13 +1,15 @@
 header, h2 {
     text-align: center;
+    font-size: 5vmin;
     padding: 2vmin;
+    width: 100%;
 }
 
 #game-grid {
     display: grid;
     justify-content: center;
-    grid-template-columns: 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 20vmin 20vmin 20vmin;
+    grid-template-rows: 20vmin 20vmin 20vmin;
     grid-gap: 10px;
 
 }
