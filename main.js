@@ -1,21 +1,21 @@
 /*----- constants -----*/
 const WIN_TABLE = [
-    [0, 1, 2], //3
-    [3, 4, 5], //12
-    [6, 7, 8], //21
+    [0, 1, 2], // Horizontal win.
+    [3, 4, 5],
+    [6, 7, 8],
 
-    [0, 3, 6], //9
-    [1, 4, 7], //12
-    [2, 5, 8], //15
+    [0, 3, 6], // Vertical win.
+    [1, 4, 7],
+    [2, 5, 8],
 
-    [0, 4, 8], //12
-    [2, 4, 6] //12
+    [0, 4, 8], // Diagnol win.
+    [2, 4, 6]
 ];
 
 const colors = {
     'null': 'gray',
     '1': 'red',
-    '-1': 'blue'
+    '-1': 'green'
 };
 
 
@@ -26,13 +26,15 @@ let winner;
 
 /*----- cached element references -----*/
 const squareEls = document.querySelectorAll('#game-grid > div');
-console.log(squareEls);
 
 const msgEl = document.getElementById('score-msg');
 
 /*----- event listeners -----*/
 document.getElementById('game-grid')
     .addEventListener('click', handleSquareClick);
+
+document.getElementById('reset')
+    .addEventListener('click', handleResetClick);
 
 /*----- functions -----*/
 init();
@@ -54,15 +56,12 @@ function handleSquareClick(event) {
     
     for (let i = 0; i < WIN_TABLE.length; i++) {
         if (Math.abs(board[WIN_TABLE[i][0]]) + 
-            Math.abs(board[WIN_TABLE[i][1]]) +
-            Math.abs(board[WIN_TABLE[i][2]]) === 3) {
+            (board[WIN_TABLE[i][1]]) +
+            (board[WIN_TABLE[i][2]]) === 3) {
                 winner = board[WIN_TABLE[i][0]];
+        } else if (board.includes(!null)) {
+            winner = 'T';
         }
-    }
-    
-
-    if (board.includes(!null)) {
-        winner = 'T';
     }
 
     renderBoard();
@@ -97,4 +96,9 @@ function renderMessage() {
     } else {
         msgEl.textContent = `${colors[turn].toUpperCase()}'s turn.`;
     }
+}
+
+function handleResetClick() {
+    init();
+    renderBoard();
 }
