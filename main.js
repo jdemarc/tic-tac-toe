@@ -42,16 +42,28 @@ function handleSquareClick(event) {
     //Extract index of square from div id using regex.
     squareIdx = squareId.replace(/\D/g, '');
 
+    console.log('Square index', squareIdx);
+    
     if (
-        squareIdx !== null ||
+        board[squareIdx] !== null ||
         winner !== null
     ) return;
 
+
     board[squareIdx] = turn;
-    turn *= 1;
 
+    console.log(board[squareIdx]);
+    turn *= -1;
 
+    
+    if (Math.abs(board[WIN_TABLE[0][0]] + board[WIN_TABLE[0][1]] + board[WIN_TABLE[0][2]] === 3)) {
+        //set winner
+        //return;
+    }
 
+    //Math.abs(board[WIN_TABLE[0][0]]) + Math.abs(board[WIN_TABLE[0][1]]) + Math.abs(board[WIN_TABLE[0][2]]);
+
+    console.log(test);
 
 }
 
