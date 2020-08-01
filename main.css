@@ -1,7 +1,7 @@
-header, h2 {
+header {
     text-align: center;
     font-size: 5vmin;
-    padding: 2vmin;
+    padding: 1vmin;
     width: 100%;
 }
 
@@ -10,11 +10,26 @@ header, h2 {
     justify-content: center;
     grid-template-columns: 20vmin 20vmin 20vmin;
     grid-template-rows: 20vmin 20vmin 20vmin;
-    grid-gap: 10px;
+    column-gap: 4vmin;
+    row-gap: 4vmin;
 
 }
 
 #game-grid > div {
-    color: blue;
-    border: 1px solid black;
+    border: 1.3vmin solid black;
 }
+
+main {
+    text-align: center;
+    font-size: 4vmin;
+    padding: 1vmin;
+}
+
+#reset {
+    font-size: 2vmin;
+    padding: 2vmin;
+    margin-top: 4vmin;
+
+}
+
+
