@@ -18,12 +18,11 @@ const colors = {
     '-1': 'indigo'
 };
 
-let score = [0, 0];
+let score = [0, 0, 0];
 /*----- app's state (variables) -----*/
 let board = [];
 let turn;
 let winner;
-//let score = [];
 
 /*----- cached element references -----*/
 // Select all direct children of the game-grid id.
@@ -86,7 +85,7 @@ function handlePlayAgainClick() {
 }
 
 function handleResetClick() {
-    score = [0, 0];
+    score = [0, 0, 0];
     init();
     renderBoard();
 }
@@ -135,13 +134,17 @@ function renderMessage() {
 
 function renderScore() {
     calcScore();
-    scoreEl.innerHTML = `Player ${colors[1]}: ${score[0]} <br> Player ${colors[-1]}: ${score[1]}`;
+    scoreEl.innerHTML = `Player ${colors[1]}: ${score[0]} <br>
+                         Player ${colors[-1]}: ${score[1]} <br>
+                         Draws: ${score[2]}`;
 }
 function calcScore() {
     if (winner === 1) {
         score[0]++;
     } else if (winner === -1) {
         score[1]++;
+    } else if (winner === 'T') {
+        score[2]++;
     } return score;
 }
 function testForWin() {

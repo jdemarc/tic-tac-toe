@@ -14,14 +14,13 @@ header, #game-state {
 }
 
 #game-grid {
-    display: grid;
+    display: inline-grid;
     justify-content: center;
     grid-template-columns: 17vmin 17vmin 17vmin;
     grid-template-rows: 17vmin 17vmin 17vmin;
     column-gap: 4vmin;
     row-gap: 4vmin;
     position: relative;
-
 }
 
 #game-grid > div {
@@ -30,16 +29,26 @@ header, #game-state {
 
 
 #play-again, #reset{
+    position: absolute;
     font-size: 4vmin;
-    padding: 2vmin;
-    margin-top: 5vmin;
-    margin-right: 2vmin;
+    padding: 1vmin;
     border: .1vmin solid black;
+    bottom: 10vmin;
+    
+}
+
+#play-again {
+    left: 5vmin;
+}
+
+#reset {
+    right: 5vmin;
 }
 
 #player-record {
+    position: absolute;
     font-size: 5vmin;
-    top: 45%;
-    left: 25%;
+    top: 15vmin;
+    left: -30vmin;
 }
 
