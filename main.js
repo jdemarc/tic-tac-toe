@@ -18,7 +18,9 @@ const colors = {
     '-1': 'indigo'
 };
 
+/*----- global variable -----*/
 let score = [0, 0, 0];
+
 /*----- app's state (variables) -----*/
 let board = [];
 let turn;
@@ -28,7 +30,7 @@ let winner;
 // Select all direct children of the game-grid id.
 const squareEls = document.querySelectorAll('#game-grid > div');
 
-//Select the h2 id='score msg' element that displays messages to user.
+// Select the h2 id='score msg' element that displays messages to user.
 const msgEl = document.getElementById('game-state');
 
 const scoreEl = document.getElementById('player-record');
@@ -55,10 +57,13 @@ function handleSquareClick(event) {
     //Extract index of square from div id using regex.
     squareIdx = squareId.replace(/\D/g, '');
 
+    // Alternatively, set each cell id to an integer -- ex: <div id=0>, <div id=1> ...
+
     /**
      * If the user attempts to click on a value that is not null, that means the square was already
      * clicked and assigned a value.  The function is exited and awaits the next click.
-     * If the winner variable is assigned a number or 'T', the game is over (win or tie).
+     * If the winner variable is truthy, the game is over (win or tie) as it has been assigned
+     * a number or 'T'.
      */ 
 
     if (
@@ -71,11 +76,14 @@ function handleSquareClick(event) {
     
     // Change current player.
     turn = turn === 1 ? -1 : 1;
+    // Alternatively: turn *= -1;
 
     // Test board for a winner, a tie, or if game is in play.
     winner = testForWin();
 
+    // Render board to reflect clicks/board assignments.
     renderBoard();
+
     renderScore();
 }
 
@@ -85,7 +93,8 @@ function handlePlayAgainClick() {
 }
 
 function handleResetClick() {
-    score = [0, 0, 0];
+    // Score must be initialized to zero only if the reset button is clicked.
+    score = Array(3).fill(0);
     init();
     renderBoard();
 }
@@ -138,6 +147,7 @@ function renderScore() {
                          Player ${colors[-1]}: ${score[1]} <br>
                          Draws: ${score[2]}`;
 }
+
 function calcScore() {
     if (winner === 1) {
         score[0]++;
@@ -147,12 +157,13 @@ function calcScore() {
         score[2]++;
     } return score;
 }
+
 function testForWin() {
     /**
      * Iterate through the win table.
-     * Each board value is set to 1 or -1.
-     * If the absolute value of the board values that match with any of the win table arrays equal 3,
-     * a winner has been found. Assign the winner the value of the first index of the matched array.
+     * Total the board values at the indices in the win table.
+     * If the absolute sum of the values is 3, a winner has been found.
+     * Assign the winner the value of the first index of the matched array and return it.
      */
 
     for (let i = 0; i < WIN_TABLE.length; i++) {
