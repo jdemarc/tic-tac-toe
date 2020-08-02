@@ -1,8 +1,15 @@
-header {
+body, button {
+    font-family: 'Amatic SC', cursive;
     text-align: center;
-    font-size: 5vmin;
-    padding: 1vmin;
+}
+
+header, #score-msg {
+    font-size: 7vmin;
     width: 100%;
+}
+
+#score-msg {
+    font-size: 5vmin;
 }
 
 #game-grid {
@@ -19,17 +26,13 @@ header {
     border: 1.3vmin solid black;
 }
 
-main {
-    text-align: center;
-    font-size: 4vmin;
-    padding: 1vmin;
-}
 
 #reset {
-    font-size: 2vmin;
+    font-size: 4vmin;
     padding: 2vmin;
-    margin-top: 4vmin;
-
+    margin-top: 5vmin;
+    border: .1vmin solid black;
 }
+
 
 

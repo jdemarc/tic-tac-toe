@@ -14,8 +14,8 @@ const WIN_TABLE = [
 
 const colors = {
     'null': '#e0e0d1',
-    '1': 'red',
-    '-1': 'lime'
+    '1': 'gold',
+    '-1': 'indigo'
 };
 
 
