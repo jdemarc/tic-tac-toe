@@ -1,3 +1,11 @@
+body {
+    background-image: url('minimalist-kraken.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
 body, button {
     font-family: 'Amatic SC', cursive;
     text-align: center;
@@ -32,17 +40,25 @@ header, #game-state {
     position: absolute;
     font-size: 4vmin;
     padding: 1vmin;
-    border: .1vmin solid black;
+    border: .1vmin solid #e0e0d1;
+    color: #e0e0d1;
+    background: black;
     bottom: 10vmin;
     
 }
 
+#play-again:hover, #reset:hover {
+    background: #e0e0d1;
+    color: black;
+    border: .1vmin solid black;
+}
+
 #play-again {
-    left: 5vmin;
+    left: 10vmin;
 }
 
 #reset {
-    right: 5vmin;
+    right: 10vmin;
 }
 
 #player-record {
