@@ -3,12 +3,12 @@ body, button {
     text-align: center;
 }
 
-header, #score-msg {
+header, #game-state {
     font-size: 6vmin;
     width: 100%;
 }
 
-#score-msg {
+#game-state {
     font-size: 5vmin;
     margin-top: 3vmin;
 }
@@ -20,6 +20,7 @@ header, #score-msg {
     grid-template-rows: 17vmin 17vmin 17vmin;
     column-gap: 4vmin;
     row-gap: 4vmin;
+    position: relative;
 
 }
 
@@ -28,12 +29,17 @@ header, #score-msg {
 }
 
 
-#reset {
+#play-again, #reset{
     font-size: 4vmin;
     padding: 2vmin;
     margin-top: 5vmin;
+    margin-right: 2vmin;
     border: .1vmin solid black;
 }
 
-
+#player-record {
+    font-size: 5vmin;
+    top: 45%;
+    left: 25%;
+}
 

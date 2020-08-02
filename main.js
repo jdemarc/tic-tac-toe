@@ -18,22 +18,30 @@ const colors = {
     '-1': 'indigo'
 };
 
-
+let score = [0, 0];
 /*----- app's state (variables) -----*/
 let board = [];
 let turn;
 let winner;
+//let score = [];
 
 /*----- cached element references -----*/
 // Select all direct children of the game-grid id.
 const squareEls = document.querySelectorAll('#game-grid > div');
 
 //Select the h2 id='score msg' element that displays messages to user.
-const msgEl = document.getElementById('score-msg');
+const msgEl = document.getElementById('game-state');
+
+const scoreEl = document.getElementById('player-record');
+
+const resetEl = document.getElementById('reset');
 
 /*----- event listeners -----*/
 document.getElementById('game-grid')
     .addEventListener('click', handleSquareClick);
+
+document.getElementById('play-again')
+    .addEventListener('click', handlePlayAgainClick);
 
 document.getElementById('reset')
     .addEventListener('click', handleResetClick);
@@ -69,9 +77,16 @@ function handleSquareClick(event) {
     winner = testForWin();
 
     renderBoard();
+    renderScore();
+}
+
+function handlePlayAgainClick() {
+    init();
+    renderBoard();
 }
 
 function handleResetClick() {
+    score = [0, 0];
     init();
     renderBoard();
 }
@@ -83,6 +98,7 @@ function init() {
     winner = null;
 
     renderBoard();
+    renderScore();
 }
 
 // Render functions
@@ -111,12 +127,23 @@ function renderMessage() {
     if (winner === null) {
         msgEl.textContent = `${colors[turn].toUpperCase()}'s turn.`;
     } else if (typeof winner === 'number') {
-        msgEl.textContent = `${colors[winner].toUpperCase()} has won.`; 
+        msgEl.textContent = `${colors[winner].toUpperCase()} has won.`;
     } else {
         msgEl.textContent = 'Tie game!'
     }
 }
 
+function renderScore() {
+    calcScore();
+    scoreEl.innerHTML = `Player ${colors[1]}: ${score[0]} <br> Player ${colors[-1]}: ${score[1]}`;
+}
+function calcScore() {
+    if (winner === 1) {
+        score[0]++;
+    } else if (winner === -1) {
+        score[1]++;
+    } return score;
+}
 function testForWin() {
     /**
      * Iterate through the win table.
