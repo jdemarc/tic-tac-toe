@@ -4,19 +4,20 @@ body, button {
 }
 
 header, #score-msg {
-    font-size: 7vmin;
+    font-size: 6vmin;
     width: 100%;
 }
 
 #score-msg {
     font-size: 5vmin;
+    margin-top: 3vmin;
 }
 
 #game-grid {
     display: grid;
     justify-content: center;
-    grid-template-columns: 20vmin 20vmin 20vmin;
-    grid-template-rows: 20vmin 20vmin 20vmin;
+    grid-template-columns: 17vmin 17vmin 17vmin;
+    grid-template-rows: 17vmin 17vmin 17vmin;
     column-gap: 4vmin;
     row-gap: 4vmin;
 
