@@ -1,6 +1,6 @@
 # TIC-TAC-TOE
 
-## How to play
+## How to Play
 The game is ready to be played.  The current player's turn is displayed at any given time.
 Match three of your color's turn vertically, horizontally, or diagonally to win. Wins and draws
 are automatically tracked.
